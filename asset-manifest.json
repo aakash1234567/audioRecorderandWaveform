@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/audioRecorderandWaveform/static/css/main.a01e38b8.css",
+    "main.js": "/audioRecorderandWaveform/static/js/main.c8d39c16.js",
+    "index.html": "/audioRecorderandWaveform/index.html",
+    "main.a01e38b8.css.map": "/audioRecorderandWaveform/static/css/main.a01e38b8.css.map",
+    "main.c8d39c16.js.map": "/audioRecorderandWaveform/static/js/main.c8d39c16.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a01e38b8.css",
+    "static/js/main.c8d39c16.js"
+  ]
+}

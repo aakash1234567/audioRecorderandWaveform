@@ -1,18 +1,13 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 
-class AudioVisualiser extends Component {
-  constructor(props) {
-    super(props);
-    this.canvas = React.createRef();
-  }
+const AudioVisualiser = (props) => {
+  useEffect(() => {
+    draw();
+  });
 
-  componentDidUpdate() {
-    this.draw();
-  }
-
-  draw() {
-    const { audioData } = this.props;
-    const canvas = this.canvas.current;
+  const draw = () => {
+    var canvas = document.getElementById("canva");
+    const { audioData } = props;
     const height = canvas.height;
     const width = canvas.width;
     const context = canvas.getContext("2d");
@@ -32,11 +27,9 @@ class AudioVisualiser extends Component {
     }
     context.lineTo(x, height / 2);
     context.stroke();
-  }
+  };
 
-  render() {
-    return <canvas width="700" height="200" ref={this.canvas} />;
-  }
-}
+  return <canvas width="700" height="200" id="canva" />;
+};
 
 export default AudioVisualiser;

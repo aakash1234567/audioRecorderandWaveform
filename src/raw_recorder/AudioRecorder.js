@@ -33,8 +33,10 @@ const useAudioRecorder = () => {
           .getUserMedia({ audio: true })
           .then((mediaStreamObj) => {
             localStream = mediaStreamObj;
-
-            mediaRecorder = new MediaRecorder(mediaStreamObj);
+            const options = {
+              audioBitsPerSecond: 128000,
+            };
+            mediaRecorder = new MediaRecorder(mediaStreamObj, options);
             mediaRecorder.start();
             mediaRecorder.onstart = () => {
               handleStartTimer();
@@ -85,7 +87,9 @@ const useAudioRecorder = () => {
       mediaRecorder.stop();
       mediaRecorder.onstop = () => {
         handleResetTimer();
-        let audioData = new Blob(dataArray.current, { type: "audio/wav;" });
+        let audioData = new Blob(dataArray.current, {
+          type: "audio/wav;",
+        });
         dataArray.current = [];
         setAudioResult(window.URL.createObjectURL(audioData));
         setStatus(RECORD_STATUS.IDLE);

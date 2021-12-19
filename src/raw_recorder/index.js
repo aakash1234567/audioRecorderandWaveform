@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AudioAnalyser from "./AudioAnalyser";
 import { ReactAudioRecorder } from "./AudioRecorder";
+import * as musicMetadata from "music-metadata-browser";
 
 const Raw = () => {
   const [mediaAudio, setmediaAudio] = useState(null);
@@ -21,6 +22,17 @@ const Raw = () => {
           const helper = (e) => {
             console.log(document.getElementById("player").captureStream());
             setmediaAudio(document.getElementById("player").captureStream());
+            hehe();
+          };
+
+          const hehe = async () => {
+            musicMetadata
+              .parseNodeStream(await audioResult)
+              .then((metadata) => {
+                // metadata has all the metadata found in the blob or file
+                console.log(metadata);
+              });
+            console.log(mediaAudio, audioResult);
           };
           return (
             <div>
@@ -31,7 +43,6 @@ const Raw = () => {
                 src={audioResult}
                 onPlay={helper}
                 title="testing.wav"
-                onEnded={() => setmediaAudio(null)}
               />
               <p>
                 Status : <b>{status}</b>

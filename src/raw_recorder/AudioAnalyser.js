@@ -1,3 +1,32 @@
+// import React, { useEffect, useState } from "react";
+// import AudioVisualiser from "./AudioVisualiser";
+
+// const AudioAnalyser = (props) => {
+//   const [audioData, setaudioData] = useState(new Uint8Array(0));
+//   const requestRef = React.useRef();
+//   var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+//   var analyser = audioContext.createAnalyser();
+//   var dataArray = new Uint8Array(analyser.frequencyBinCount);
+//   var source = audioContext.createMediaStreamSource(props.audio);
+//   useEffect(() => {
+//     source.connect(analyser);
+//     requestRef.current = requestAnimationFrame(tick);
+//     return () => {
+//       cancelAnimationFrame(requestRef.current);
+//       analyser.disconnect();
+//       source.disconnect();
+//     };
+//   }, []);
+//   const tick = () => {
+//     analyser.getByteTimeDomainData(dataArray);
+//     setaudioData(dataArray);
+//     requestRef.current = requestAnimationFrame(tick);
+//   };
+//   return <AudioVisualiser audioData={audioData} />;
+// };
+
+// export default AudioAnalyser;
+
 import React, { Component } from "react";
 import AudioVisualiser from "./AudioVisualiser";
 
